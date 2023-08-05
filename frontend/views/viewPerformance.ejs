@@ -1,0 +1,79 @@
+<%- include('./partial/_header.ejs'); %>
+<%- include('./partial/_admin_header.ejs'); %>
+
+<div class="container mt-5" style="max-width: 800px;">
+  <h1>Admin - View Performance Reviews</h1>
+  <div class="table-container">
+    <!-- Performance review table with shadow -->
+    <table class="table table-bordered table-striped mt-3 shadow">
+      <thead class="" style="background-color: #007bff; color: white;">
+        <tr>
+          <th style="width: 150px;">Title</th>
+          <th>Description</th>
+          <th style="width: 160px;">Employee</th>
+          <th style="width: 100px;">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% PerformanceReviews.forEach(review => { %>
+          <tr>
+            <td><%= review.title %></td>
+            <td><%= review.description %></td>
+            <td><%= review.employee %></td>
+            <td class="button-container">
+              <form action="/performance/edit/<%= review._id %>" method="post">
+                <button class="btn btn-primary btn-sm mr-1">
+                  <i class="fas fa-pen"></i>
+                </button>
+              </form>
+              <form action="/performance/delete/<%= review._id %>" method="post">
+                <button class="btn btn-danger btn-sm">
+                  <i class="fas fa-trash"></i>
+                </button>
+              </form>
+              <form action="/performance/performanceAssign/<%= review._id %>" method="post">
+              <button class="btn btn-success btn-sm">
+                <i class="fas fa-check"></i>
+              </button>
+              </form>
+            </td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<%- include('./partial/_footer.ejs'); %>
+
+<style>
+  .table {
+    font-size: 16px;
+  }
+
+  .table thead th {
+    font-weight: bold;
+  }
+
+  .table tbody td {
+    vertical-align: middle;
+  }
+
+  .table-container {
+    position: relative;
+  }
+
+  .shadow {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Flexbox styles */
+  .button-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .button-container button {
+    margin-right: 5px;
+  }
+</style>

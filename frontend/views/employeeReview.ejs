@@ -1,0 +1,142 @@
+<%- include('./partial/_header.ejs'); %>
+
+
+<nav class="navbar navbar-expand-lg" style="background-color: #3498db; color: #fff;">
+  <div class="container">
+    <!-- Left side -->
+    <a class="navbar-brand" href="/employeeUser/dashboard" style="color: #fff;">Employee Dashboard</a>
+
+    <ul class="navbar-nav mx-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/employeeUser/reviewTable"><h5 style="color: #fff;">Performance view</h5></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/employeeUser/signin"><h5 style="color: #fff;">Employee Review</h5></a>
+      </li>
+    </ul>
+
+    <!-- Center -->
+
+    <!-- Right side -->
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/employeeUser/signin"><h5 style="color: #fff;">Sign Out</h5></a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+<div class="container mt-5" style="max-width: 500px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+  <h1 class="text-center">Employee Review</h1>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Performance Review Title</h5>
+
+      <form action="/admin/reviewTable/toManage/<%= Result._id %>" method="post">
+
+        
+          <div class="form-group">
+            <label for="title_<%= Result._id %>">Title</label>
+            <input type="text" class="form-control" id="title_<%= Result._id %>" name="title" value="<%= Result.title %>" required>
+          </div>
+          <div class="form-group">
+            <label for="description_<%= Result._id %>">Description</label>
+            <textarea class="form-control" id="description_<%= Result._id %>" name="description" rows="3" required><%= Result.description %></textarea>
+          </div>
+          <div class="form-group">
+            <label for="employee_<%= Result._id %>">Employee</label>
+            <input type="text" class="form-control" id="employee_<%= Result._id %>" name="employee" value="<%= Result.employee %>" required>
+          </div>
+          <!-- Add other form fields as needed -->
+          <div class="form-group">
+            <label for="comment_<%= Result._id %>">Comments</label>
+            <textarea class="form-control" id="comment_<%= Result._id %>" name="comment" rows="3" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="ratings_<%= Result._id %>">Ratings</label>
+            <input type="number" class="form-control" id="ratings_<%= Result._id %>" name="ratings" min="1" max="5" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit Feedback</button>
+      
+
+      </form>
+    
+    </div>
+  </div>
+</div>
+
+<%- include('./partial/_footer.ejs'); %>
+
+<style>
+  /* Add some general styles to improve the overall look */
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+  }
+
+  /* .container {
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  } */
+
+  h1 {
+    margin-bottom: 20px;
+  }
+
+  .card {
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  /* Style the text area */
+  .form-control {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 6px 12px;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* Style the input number */
+  .form-control[type="number"] {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 6px 12px;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* Style the submit button */
+  .btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .btn:hover {
+    background-color: #0056b3;
+  }
+
+  /* Center the form */
+  .text-center {
+    text-align: center;
+  }
+</style>

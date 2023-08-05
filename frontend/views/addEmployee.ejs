@@ -1,0 +1,75 @@
+<%- include('./partial/_header.ejs'); %>
+<%- include('./partial/_admin_header.ejs'); %>
+
+<div class="container mt-5" style="max-width: 500px;">
+  <div class="card shadow">
+    <div class="card-body">
+      <h2 class="card-title text-center mb-4" style="color: #007bff; font-weight: bold;">Add Employee</h2>
+      <form action="/employees/employee_form" method="POST">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" class="form-control" id="phone" name="phone">
+        </div>
+        <div class="form-group">
+          <label for="department">Department</label>
+          <select class="form-control" id="department" name="department">
+            <option value="HR">Human Resources</option>
+            <option value="IT">Information Technology</option>
+            <option value="Finance">Finance</option>
+            <!-- Add more department options as needed -->
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="dob">Date of Birth</label>
+          <input type="date" class="form-control" id="dob" name="dob">
+        </div>
+        
+        <button type="submit" class="btn btn-primary mt-4 btn-block">Add Employee</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<%- include('./partial/_footer.ejs'); %>
+
+<style>
+  .card {
+    border: none;
+    border-radius: 10px;
+  }
+
+  .card-body {
+    padding: 30px;
+  }
+
+  .form-group label {
+    font-weight: bold;
+  }
+
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+
+  .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+  }
+
+  .btn-block {
+    display: block;
+    width: 100%;
+  }
+
+  .shadow {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+</style>

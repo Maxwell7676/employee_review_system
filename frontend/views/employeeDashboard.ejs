@@ -1,0 +1,76 @@
+<%- include('./partial/_header.ejs'); %>
+
+<style>
+  /* Custom styles */
+  body {
+    background-color: #f8f9fa;
+    color: #333;
+  }
+
+  .navbar {
+    margin-bottom: 20px;
+  }
+
+  .navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .navbar-nav .nav-item {
+    margin-right: 10px;
+  }
+
+  .jumbotron {
+    background-color: #007bff;
+    color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+  }
+
+  .jumbotron h1 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  .jumbotron p {
+    font-size: 18px;
+    margin-bottom: 0;
+  }
+</style>
+
+<nav class="navbar navbar-expand-lg" style="background-color: #3498db; color: #fff;">
+  <div class="container">
+    <!-- Left side -->
+    <a class="navbar-brand" href="/employeeUser/dashboard" style="color: #fff;">Employee Dashboard</a>
+
+    <ul class="navbar-nav mx-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/employeeUser/reviewTable"><h5 style="color: #fff;">Performance view</h5></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/employeeUser/signin"><h5 style="color: #fff;">Employee Review</h5></a>
+      </li>
+    </ul>
+
+    <!-- Center -->
+
+    <!-- Right side -->
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/employeeUser/signin"><h5 style="color: #fff;">Sign Out</h5></a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+<!-- Content -->
+<div class="container mt-5">
+  <div class="jumbotron">
+    <h1 class="display-4">Welcome to Your Employee Dashboard</h1>
+    <p class="lead">This is your personalized dashboard. You can view your performance feedback and other employee-related information here.</p>
+  </div>
+</div>
+
+<%- include('./partial/_footer.ejs'); %>

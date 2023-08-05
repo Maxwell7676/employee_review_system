@@ -1,0 +1,93 @@
+<%- include('./partial/_header.ejs'); %>
+
+<%- include('./partial/_admin_header.ejs'); %>
+
+<div class="container mt-5">
+  <h2 class="text-center mb-4" style="color: #6f42c1; font-weight: bold;">Employee List</h2>
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped shadow-sm">
+      <thead class="thead-purple">
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone Number</th>
+          <th>Department</th>
+          <th>Date of Birth</th>
+        
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% employees.forEach(employee => { %>
+          <tr>
+            <td><%= employee.name %></td>
+            <td><%= employee.email %></td>
+            <td><%= employee.phone %></td>
+            <td><%= employee.department %></td>
+            <td><%= employee.dob ? employee.dob.toLocaleDateString() : 'N/A' %></td>
+            
+            <td>
+              <a href="/employees/<%= employee.id %>/edit" class="btn btn-primary btn-sm">Edit</a>
+            </td>
+            <td>
+              <form action="/employees/<%= employee.id %>/delete" method="POST" onsubmit="return confirm('Are you sure you want to delete this employee?')">
+                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+              </form>
+            </td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<%- include('./partial/_footer.ejs'); %>
+
+<style>
+  .table {
+    font-size: 16px;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .table thead th {
+    font-weight: bold;
+    color: white;
+  }
+
+  .table tbody td {
+    vertical-align: middle;
+  }
+
+  .table-responsive {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 10px;
+  }
+
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+
+  .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+  }
+
+  .btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+  }
+
+  .btn-danger:hover {
+    background-color: #c82333;
+    border-color: #c82333;
+  }
+
+  .thead-purple {
+    background-color: #6f42c1;
+  }
+</style>

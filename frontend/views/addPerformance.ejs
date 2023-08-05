@@ -1,0 +1,61 @@
+<%- include('./partial/_header.ejs'); %>
+
+<%- include('./partial/_admin_header.ejs'); %>
+
+<div class="container mt-5" style="max-width: 600px;">
+  <div class="card shadow p-4">
+    <h1 class="text-center mb-4" style="color: #007bff; font-weight: bold;">Add Performance Review</h1>
+    <form action="/performance" method="POST">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" id="title" name="title" required>
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea class="form-control" id="description" name="description" rows="5" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="employee">Select Employee</label>
+        <select class="form-control" id="employee" name="employee" required>
+          <% employees.forEach(employee => { %>
+          <option value="<%= employee.name %>"><%= employee.name %></option>
+          <% }); %>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block mt-4">Add Performance Review</button>
+    </form>
+  </div>
+</div>
+
+<%- include('./partial/_footer.ejs'); %>
+
+<style>
+  .card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .card-body {
+    padding: 30px;
+  }
+
+  .form-group label {
+    font-weight: bold;
+  }
+
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+
+  .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+  }
+
+  .btn-block {
+    display: block;
+    width: 100%;
+  }
+</style>

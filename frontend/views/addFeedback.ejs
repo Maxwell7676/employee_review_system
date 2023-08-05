@@ -1,0 +1,23 @@
+
+    <%- include('./partial/_header.ejs'); %>
+
+  <div class="container mt-5">
+    <h1>Add Feedback</h1>
+    <form action="/feedback" method="POST">
+      <div class="form-group">
+        <label for="performanceReview">Performance Review ID</label>
+        <input type="text" class="form-control" id="performanceReview" name="performanceReview" required>
+      </div>
+      <div class="form-group">
+        <label for="feedbackBy">Feedback By</label>
+        <input type="text" class="form-control" id="feedbackBy" name="feedbackBy" required>
+      </div>
+      <div class="form-group">
+        <label for="feedbackText">Feedback Text</label>
+        <textarea class="form-control" id="feedbackText" name="feedbackText" rows="4" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary mt-3">Add Feedback</button>
+    </form>
+  </div>
+
+  <%- include('./partial/_footer.ejs'); %>

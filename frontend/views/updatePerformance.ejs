@@ -1,0 +1,71 @@
+<%- include('./partial/_header.ejs'); %>
+<%- include('./partial/_admin_header.ejs'); %>
+
+<div class="container mt-5" style="max-width: 500px;">
+  <div class="card shadow">
+    <div class="card-body">
+      <h2 class="card-title text-center">Update Performance</h2>
+      <form action="/performance/update/<%= performanceReview._id %>" method="POST">
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input type="text" class="form-control" id="title" name="title" value="<%= performanceReview.title %>" required>
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea class="form-control" id="description" name="description" rows="5" required><%= performanceReview.description %></textarea>
+        </div>
+        <div class="form-group">
+          <label for="employee">Select Employee</label>
+          <select class="form-control" id="employee" name="employee" required>
+            <% employees.forEach(employee => { %>
+              <% if (employee.name === performanceReview.employee) { %>
+                <option value="<%= employee.name %>" selected><%= employee.name %></option>
+              <% } else { %>
+                <option value="<%= employee.name %>"><%= employee.name %></option>
+              <% } %>
+            <% }); %>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Update Performance Review</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<%- include('./partial/_footer.ejs'); %>
+
+<style>
+  .card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .card-title {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border-radius: 5px 5px 0 0;
+  }
+
+  .form-group label {
+    font-weight: bold;
+  }
+
+  .form-control {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+
+  .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+  }
+
+  .btn-primary:focus {
+    box-shadow: none;
+  }
+</style>
