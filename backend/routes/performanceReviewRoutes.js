@@ -2,18 +2,24 @@ const express = require('express');
 const router = express.Router();
 const performanceReviewController = require('../controllers/performanceReviewController');
 
-//view performances
-router.get('/view', performanceReviewController.viewPerformance);
+
 
 
 // performance adding form
 router.get('/', performanceReviewController.addPerformanceReviewsForm);
 
+// CREATE a new performance review
+router.post('/', performanceReviewController.createPerformanceReview);
+
+
+//view performances
+router.get('/view', performanceReviewController.viewPerformance);
+
+
 //for edit performance review
 router.post('/edit/:id', performanceReviewController.getPerformanceReviewById);
 
-// CREATE a new performance review
-router.post('/', performanceReviewController.createPerformanceReview);
+
 
 // UPDATE an existing performance review by ID
 router.post('/update/:id', performanceReviewController.updatePerformanceReview);

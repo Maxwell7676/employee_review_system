@@ -53,7 +53,8 @@ exports.createPerformanceReview = async (req, res) => {
   }
 };
 
-// for update the performance review
+
+//for update the performance review
 exports.getPerformanceReviewById = async (req, res) => {
     try {
       const performanceReview = await PerformanceReview.findById(req.params.id);
@@ -77,11 +78,11 @@ exports.updatePerformanceReview = async (req, res) => {
       const updatedPerformanceReview = await PerformanceReview.findByIdAndUpdate(
         req.params.id,
         {
-          employee, // Assuming that the employee field stores the name as a string
+          employee, 
           title,
           description,
         },
-        { new: true } // This option returns the updated document instead of the original one
+        { new: true } 
       );
      
       res.redirect('/Performance/view');
@@ -163,7 +164,6 @@ exports.assignToTable = async (req, res) => {
   try {
     const selectedEmployees = req.body.selectedEmployees;
 
-    // Assuming PerformanceReview.findById returns the necessary data (e.g., _id, title, description)
     const selectedEmp = await PerformanceReview.findById(selectedEmployees);
 
     req.session.performanceSelectedList = req.session.performanceSelectedList || [];

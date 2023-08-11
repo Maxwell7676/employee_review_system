@@ -10,19 +10,19 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 
-// mongoose.connect('mongodb://127.0.0.1:27017/employee_review_system', {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-// });
-
-mongoose.connect('mongodb+srv://ravirathod123413:CTP5ZVOEdP0oBKlB@cluster0.0ixcgfg.mongodb.net/employee_review_system', {
+mongoose.connect('mongodb://127.0.0.1:27017/employee_review_system', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
 
+// mongoose.connect('mongodb+srv://ravirathod123413:CTP5ZVOEdP0oBKlB@cluster0.0ixcgfg.mongodb.net/employee_review_system', {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// });
+
 
 //static file
-app.use(express.static('public'));
+//app.use(express.static('public'));
 app.use(cookie());
 
 
@@ -30,9 +30,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 
-// Set the view engine to EJS
+// Serve static files from the public folder
+app.use(express.static(path.join(__dirname, 'frontend/public')));
+
+// Set EJS as the view engine
+app.set('views', path.join(__dirname, 'frontend/views'));
 app.set('view engine', 'ejs');
-app.set('views', './views'); // Set the views directory
+
 
 
 app.use(session({
@@ -50,19 +54,12 @@ app.use(session({
 
 
 
-// Serve static files from the public folder
-app.use(express.static(path.join(__dirname, 'frontend/public')));
-
-// Set EJS as the view engine
-app.set('views', path.join(__dirname, 'frontend/views'));
-app.set('view engine', 'ejs');
-
 
  
 
 
 const employeeRoutes = require('./backend/routes/employeeRoutes');
-const feedbackRoutes = require('./backend/routes/feedbackRoutes');
+
 const performanceReviewRoutes = require('./backend/routes/performanceReviewRoutes');
 
 //sign in
@@ -79,7 +76,7 @@ app.get('/', (req, res)=>{
 
 
 app.use('/employees', employeeRoutes);
-app.use('/feedback', feedbackRoutes);
+
 app.use('/performance', performanceReviewRoutes);
 
 //sign in

@@ -2,16 +2,16 @@ const { error } = require('console');
 const Employee = require('../models/employee');
 
 // GET all employees
-    exports.getAllEmployees =  async (req, res) => {
-    try {
-      const employees = await Employee.find();
+  //   exports.getAllEmployees =  async (req, res) => {
+  //   try {
+  //     const employees = await Employee.find();
       
-        res.render('viewEmployee', { employee: employees });
+  //       res.render('viewEmployee', { employee: employees });
 
-    } catch (err) {
-      res.status(500).json({ error: 'Error fetching employees' });
-    }
-  }
+  //   } catch (err) {
+  //     res.status(500).json({ error: 'Error fetching employees' });
+  //   }
+  // }
 
 
   //employee list
@@ -60,7 +60,7 @@ exports.createEmployee = async (req, res) => {
     try {
         const employee = await Employee.findById(req.params.id);
 
-        console.log({employee});
+        //console.log({employee});
        
         res.render('editEmployee', { employee });
     } catch (err) {
@@ -72,7 +72,7 @@ exports.createEmployee = async (req, res) => {
   
 exports.updateEmployee = async (req, res) => {
     try {
-      const { name, email, phone, department, dob, isAdmin } = req.body;
+      const { name, email, phone, department, dob } = req.body;
       const updatedEmployee = await Employee.findByIdAndUpdate(
         req.params.id,
         {
@@ -81,7 +81,7 @@ exports.updateEmployee = async (req, res) => {
           phone,
           department,
           dob,
-          isAdmin: !!isAdmin, 
+          
         },
         { new: true }
       );

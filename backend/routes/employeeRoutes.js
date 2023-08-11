@@ -5,7 +5,7 @@ const router = express.Router();
 const employeeController = require('../controllers/employeeController');
 
 // GET all employees
-router.get('/', employeeController.getAllEmployees);
+// router.get('/', employeeController.getAllEmployees);
 
 //employee forrm
 router.get('/employee_form', employeeController.employeeForm);
